@@ -48,8 +48,14 @@ class User extends Authenticatable
         return $this->belongsToMany(Users::class,'followers','follower_id','following_id');
     }
 
+
     public function amIfollowing($user_id)
     {
         return \DB::table('followers')->where('follower_id',auth()->user()->id)->where('following_id',$user_id)->exists();
+    }
+
+    public static function follwingIds()
+    {
+        return \DB::table('followers')->select('following_id')->where('follower_id',auth()->user()->id)->get();
     }
 }

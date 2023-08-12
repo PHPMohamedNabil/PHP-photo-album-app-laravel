@@ -29,20 +29,15 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <form action="" method="get" class="col-8">
+                <form action="{{route('home')}}" method="get" class="col-6">
 
                   <div class="input-group">
-                  <input type="text" class="form-control" aria-label="Text input with dropdown button">
-                  <div class="input-group-append">
-                      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Dropdown</button>
-                      <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Action</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
-                      <div role="separator" class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Separated link</a>
-                      </div>
-                  </div>
+                  <input type="text" class="form-control" aria-label="Text input with dropdown button" name="title" placeholder="search for albums or users to follow...">
+                  <select class="form-control col-3" name="type">
+                    
+                        <option class="dropdown-item" value="album" @if(isset($type) && $type=='albums') selected @endif>Album</option>
+                        <option class="dropdown-item" @if(isset($type) && $type=='users') selected @endif value="users">Users</option>  
+                  </select>  
                   </div>
 
                 </form>
